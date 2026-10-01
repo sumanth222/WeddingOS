@@ -8,6 +8,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ParticleFieldComponent } from '../../particle-field/particle-field';
+import { AudioService } from '../../core/services/audio';
 
 
 @Component({
@@ -22,6 +23,8 @@ import { ParticleFieldComponent } from '../../particle-field/particle-field';
 export class IntroComponent implements AfterViewInit {
 
   private element = inject(ElementRef);
+
+  constructor(private audioService: AudioService) {}
 
   ngAfterViewInit(): void {
 
@@ -214,5 +217,9 @@ export class IntroComponent implements AfterViewInit {
     }
   });
 
+}
+
+startMusic(): void {
+  this.audioService.play();
 }
 }
