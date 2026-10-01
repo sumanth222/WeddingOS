@@ -1,0 +1,109 @@
+<section class="memories">
+
+  <div class="memories-stage">
+
+    <!-- Ambient background -->
+
+    <div class="ambient"></div>
+
+    <div class="grain"></div>
+
+
+    <!-- Scene heading -->
+
+    <div class="memory-heading">
+
+      <span class="eyebrow">
+        THEIR STORY
+      </span>
+
+      <h2>
+        A thousand<br>
+        little moments.
+      </h2>
+
+    </div>
+
+
+    <!-- Photo stack -->
+
+    <div class="memory-stack">
+
+      @for (
+        memory of memories;
+        track memory.id;
+        let i = $index
+      ) {
+
+        <div
+          class="memory-card"
+          [attr.data-index]="i"
+        >
+
+          <div class="memory-photo">
+
+            <img
+              [src]="memory.image"
+              [alt]="memory.title"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="photo-shade"></div>
+
+          </div>
+
+
+          <div class="memory-info">
+
+            <span class="memory-year">
+              {{ memory.year }}
+            </span>
+
+            <h3>
+              {{ memory.title }}
+            </h3>
+
+            <p>
+              {{ memory.subtitle }}
+            </p>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+
+    <!-- Closing statement -->
+
+    <div class="memory-ending">
+
+      <span>
+        And this...
+      </span>
+
+      <strong>
+        is only the beginning.
+      </strong>
+
+    </div>
+
+
+    <!-- Scene progress -->
+
+    <div class="scene-progress">
+
+      <span>03</span>
+
+      <div class="progress-line"></div>
+
+      <span>09</span>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,192 @@
+<section id="events" class="events-scene">
+
+  <div class="events-stage">
+
+    <!-- Background -->
+
+    <div class="ambient-glow"></div>
+
+    <div class="grid"></div>
+
+
+    <!-- Header -->
+
+    <header class="events-header">
+
+      <div>
+
+        <span class="system-label">
+          WEDDINGOS
+        </span>
+
+        <span class="section-label">
+          / EVENTS
+        </span>
+
+      </div>
+
+      <div class="connection">
+
+        <span class="dot"></span>
+
+        LIVE
+
+      </div>
+
+    </header>
+
+
+    <!-- Section intro -->
+
+    <div class="events-intro">
+
+      <span class="eyebrow">
+        EVENT DATABASE
+      </span>
+
+      <h1>
+        The moments<br>
+        that matter.
+      </h1>
+
+    </div>
+
+
+    <!-- Events -->
+
+    <div class="event-system">
+
+      @for (
+        event of events;
+        track event.id;
+        let i = $index
+      ) {
+
+        <article
+          class="event-card"
+          [attr.data-index]="i"
+        >
+
+          <!-- Event number -->
+
+          <div class="event-top">
+
+            <span class="event-number">
+              {{ event.number }}
+            </span>
+
+            <span class="event-type">
+              {{ event.type }}
+            </span>
+
+          </div>
+
+
+          <!-- Event icon -->
+
+          <div class="event-icon">
+
+            <span>
+              {{ event.icon }}
+            </span>
+
+          </div>
+
+
+          <!-- Main information -->
+
+          <div class="event-content">
+
+            <h2>
+              {{ event.title }}
+            </h2>
+
+            <div class="event-date">
+              {{ event.date }}
+            </div>
+
+            <div class="event-time">
+              {{ event.time }}
+            </div>
+
+          </div>
+
+
+          <!-- Venue -->
+
+          <div class="event-venue">
+
+            <span class="venue-label">
+              LOCATION
+            </span>
+
+            <span class="venue-name">
+              {{ event.venue }}
+            </span>
+
+          </div>
+
+
+          <!-- Description -->
+
+          <p class="event-description">
+            {{ event.description }}
+          </p>
+
+
+          <!-- Bottom status -->
+
+          <div class="event-footer">
+
+            <span>
+              EVENT STATUS
+            </span>
+
+            <span class="status">
+              CONFIRMED
+            </span>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+
+    <!-- Ending -->
+
+    <div class="events-ending">
+
+      <span class="eyebrow">
+        ALL SYSTEMS READY
+      </span>
+
+      <h2>
+        See you there.
+      </h2>
+
+      <p>
+        The important part is that
+        you are there with them.
+      </p>
+
+    </div>
+
+
+    <!-- Progress -->
+
+    <div class="scene-progress">
+
+      <span>05</span>
+
+      <div class="progress-line"></div>
+
+      <span>09</span>
+
+    </div>
+
+  </div>
+
+</section>

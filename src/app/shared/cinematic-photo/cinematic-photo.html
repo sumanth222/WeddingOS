@@ -1,0 +1,34 @@
+<div class="photo-wrapper">
+
+  <div class="photo-frame">
+
+    <img
+      [src]="memory().image"
+      [alt]="memory().title"
+    />
+
+    <div class="photo-overlay"></div>
+
+  </div>
+
+  <div class="photo-info">
+
+    @if (memory().year) {
+      <span class="year">
+        {{ memory().year }}
+      </span>
+    }
+
+    <h2>
+      {{ memory().title }}
+    </h2>
+
+    @if (memory().subtitle) {
+      <p>
+        {{ memory().subtitle }}
+      </p>
+    }
+
+  </div>
+
+</div>

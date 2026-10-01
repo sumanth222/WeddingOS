@@ -1,0 +1,642 @@
+.wedding-os {
+  position: relative;
+
+  height: 700vh;
+
+  background: #030303;
+
+  color: var(--cream);
+
+  font-family: 'Inter', sans-serif;
+}
+
+
+.os-stage {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #030303;
+}
+
+
+/* =================================
+   GRID
+================================= */
+
+.grid {
+  position: absolute;
+
+  inset: -50%;
+
+  background-image:
+    linear-gradient(
+      rgba(201, 169, 110, 0.035)
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(201, 169, 110, 0.035)
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    45px 45px;
+
+  transform:
+    perspective(500px)
+    rotateX(60deg)
+    translateY(20%);
+
+  transform-origin:
+    center bottom;
+
+  opacity: 0.5;
+
+  z-index: 1;
+}
+
+
+/* =================================
+   AMBIENT GLOW
+================================= */
+
+.glow {
+  position: absolute;
+
+  left: 50%;
+  top: 45%;
+
+  width: 80vw;
+  height: 80vw;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201, 169, 110, 0.07),
+      transparent 65%
+    );
+
+  filter: blur(20px);
+
+  z-index: 2;
+}
+
+
+/* =================================
+   BOOT SCREEN
+================================= */
+
+.boot-screen {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 20;
+
+  padding:
+    28px
+    24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background: #030303;
+
+  pointer-events: none;
+}
+
+
+.boot-header {
+  position: absolute;
+
+  top: 28px;
+  left: 24px;
+  right: 24px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  font-family:
+    'Inter',
+    sans-serif;
+}
+
+
+.boot-logo {
+  font-size: 11px;
+
+  letter-spacing: 0.3em;
+
+  color: var(--gold);
+}
+
+
+.boot-version {
+  font-size: 8px;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(245,241,232,0.3);
+}
+
+
+.terminal {
+  width: 100%;
+
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  font-family:
+    'SFMono-Regular',
+    'Menlo',
+    monospace;
+
+  font-size: 10px;
+
+  line-height: 2.2;
+
+  color:
+    rgba(245,241,232,0.65);
+}
+
+
+.terminal-line {
+  opacity: 0;
+}
+
+
+.terminal-line span {
+  float: right;
+
+  color: #7fbf8c;
+}
+
+
+.progress {
+  width: 100%;
+
+  max-width: 500px;
+
+  margin:
+    40px
+    auto
+    0;
+
+  opacity: 0;
+}
+
+
+.progress-track {
+  width: 100%;
+
+  height: 1px;
+
+  background:
+    rgba(245,241,232,0.1);
+
+  overflow: hidden;
+}
+
+
+.progress-bar {
+  width: 0%;
+
+  height: 100%;
+
+  background: var(--gold);
+
+  transform-origin: left;
+}
+
+
+.progress-percent {
+  display: block;
+
+  margin-top: 8px;
+
+  text-align: right;
+
+  font-family: monospace;
+
+  font-size: 8px;
+
+  color:
+    rgba(245,241,232,0.4);
+}
+
+
+.system-ready {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  text-align: center;
+
+  opacity: 0;
+
+  font-family: monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.35em;
+
+  color: var(--gold);
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 20px
+    rgba(201,169,110,0.6);
+}
+
+
+/* =================================
+   MAIN INTERFACE
+================================= */
+
+.os-interface {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  padding:
+    24px;
+
+  opacity: 0;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.os-header {
+  position: absolute;
+
+  top: 24px;
+  left: 24px;
+  right: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.system-label {
+  display: block;
+
+  font-size: 10px;
+
+  letter-spacing: 0.25em;
+
+  color: var(--gold);
+}
+
+
+.system-version {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(245,241,232,0.3);
+}
+
+
+.system-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 7px;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(245,241,232,0.4);
+}
+
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #7fbf8c;
+
+  box-shadow:
+    0 0 10px
+    rgba(127,191,140,0.7);
+}
+
+
+/* =================================
+   DASHBOARD
+================================= */
+
+.dashboard {
+  position: absolute;
+
+  top: 50%;
+
+  left: 24px;
+  right: 24px;
+
+  transform:
+    translateY(-45%);
+}
+
+
+.welcome {
+  opacity: 0;
+}
+
+
+.eyebrow {
+  font-size: 8px;
+
+  letter-spacing: 0.35em;
+
+  color: var(--gold);
+}
+
+
+.welcome h1 {
+  margin:
+    12px
+    0
+    14px;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size:
+    clamp(3.2rem, 14vw, 6rem);
+
+  line-height: 0.88;
+
+  font-weight: 300;
+}
+
+
+.welcome p {
+  max-width: 260px;
+
+  margin: 0;
+
+  color:
+    rgba(245,241,232,0.45);
+
+  font-size: 10px;
+
+  line-height: 1.7;
+}
+
+
+/* =================================
+   COUPLE MODULE
+================================= */
+
+.couple-module {
+  margin-top: 45px;
+
+  padding:
+    18px;
+
+  border:
+    1px solid
+    rgba(201,169,110,0.16);
+
+  background:
+    rgba(255,255,255,0.015);
+
+  opacity: 0;
+}
+
+
+.module-label {
+  font-family: monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(245,241,232,0.3);
+}
+
+
+.couple {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 14px;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 1.5rem;
+
+  font-weight: 400;
+}
+
+
+.couple strong {
+  color: var(--gold);
+
+  font-weight: 300;
+}
+
+
+.marriage-status {
+  margin-top: 12px;
+
+  font-family: monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  color:
+    rgba(245,241,232,0.35);
+}
+
+
+.marriage-status span {
+  color: var(--gold);
+}
+
+
+/* =================================
+   MODULES
+================================= */
+
+.modules {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+
+  margin-top: 10px;
+
+  opacity: 0;
+}
+
+
+.module {
+  position: relative;
+
+  min-height: 90px;
+
+  padding: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  text-align: left;
+
+  border:
+    1px solid
+    rgba(245,241,232,0.08);
+
+  background:
+    rgba(255,255,255,0.02);
+
+  color: var(--cream);
+
+  font-family: 'Inter', sans-serif;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.module:active {
+  border-color:
+    rgba(201,169,110,0.5);
+
+  background:
+    rgba(201,169,110,0.06);
+}
+
+
+.module-number {
+  font-family: monospace;
+
+  font-size: 7px;
+
+  color:
+    rgba(245,241,232,0.25);
+}
+
+
+.module-title {
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 1.4rem;
+
+  font-weight: 400;
+}
+
+
+.module-arrow {
+  position: absolute;
+
+  right: 12px;
+  bottom: 12px;
+
+  color: var(--gold);
+
+  font-size: 12px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+.os-footer {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-family: monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(245,241,232,0.2);
+}
+
+.modules {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.module {
+  position: relative;
+  z-index: 10000;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
