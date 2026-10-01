@@ -44,25 +44,25 @@ export class AppComponent {
     private musicStarted = false;
 
     ngAfterViewInit(): void {
-      this.audioService.initialize(
-        this.weddingMusic.nativeElement
-      );
+  const audio = this.weddingMusic.nativeElement;
 
-      window.addEventListener(
-        'scroll',
-        this.handleFirstScroll,
-        { passive: true, once: true }
-      );
-    }
+  audio.loop = true;
+  audio.volume = 0.70;
 
-    private handleFirstScroll = (): void => {
-      if (this.musicStarted) {
-        return;
-      }
+  const startMusic = (): void => {
+    audio.play()
+      .then(() => {
+        console.log('🎵 Wedding music started');
+      })
+      .catch(error => {
+        console.error('Audio failed:', error);
+      });
+  };
 
-      this.musicStarted = true;
-
-      this.audioService.play();
-    };
+  window.addEventListener('touchstart', startMusic, {
+    once: true,
+    passive: true
+  });
+}
 
 }
