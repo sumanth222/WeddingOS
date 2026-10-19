@@ -15,18 +15,18 @@ export class Timeline {
       subtitle: 'A golden beginning',
       description:
         'A little sunshine, a lot of laughter, and blessings for the beautiful journey ahead.',
-      time: 'TIME TO BE ANNOUNCED',
+      time: '',
       icon: '✿',
       image: false
     },
     {
-      id: 'cocktail',
+      id: 'after-party',
       number: '02',
-      name: 'Cocktail Party',
+      name: 'After Party',
       subtitle: 'An evening to remember',
       description:
         'Good music, happy hearts, and our favourite people coming together for a night of celebration.',
-      time: 'TIME TO BE ANNOUNCED',
+      time: 'Evening',
       icon: '✧',
       image: false
     },
@@ -37,7 +37,7 @@ export class Timeline {
       subtitle: 'The beginning of forever',
       description:
         'A beautiful promise, surrounded by the love and blessings of everyone who matters most.',
-      time: 'MUHURTHAM: TIME TO BE ANNOUNCED',
+      time: 'MUHURTHAM: 11:30 AM',
       icon: '♡',
       image: true
     }

@@ -1,454 +1,337 @@
 :host {
   display: block;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #624b40;
 }
 
-.timeline-screen {
+.celebration-timeline {
   --terracotta: #a9472f;
-  --terracotta-dark: #8e3826;
+  --terracotta-deep: #913a27;
   --ivory: #f7efe3;
   --paper: #fffdf8;
-  --body-text: #654f43;
+  --body: #765d4d;
   --muted: #987b69;
-  --line: #dec8b4;
+  --line: #c99a7f;
 
   position: relative;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100svh;
+  min-height: 0;
+  padding: clamp(1rem, 3.5svh, 2.5rem) clamp(1rem, 4vw, 3rem);
   overflow: hidden;
-  padding: clamp(4.5rem, 9vw, 8rem) clamp(1rem, 5vw, 4rem)
-    clamp(3rem, 7vw, 6rem);
-
   background:
-    radial-gradient(
-      ellipse at 8% 16%,
-      rgba(232, 223, 205, 0.8),
-      transparent 32%
-    ),
-    radial-gradient(
-      ellipse at 94% 48%,
-      rgba(232, 199, 183, 0.27),
-      transparent 35%
-    ),
+    radial-gradient(ellipse at 8% 12%, rgba(232, 223, 205, .72), transparent 34%),
+    radial-gradient(ellipse at 94% 68%, rgba(232, 199, 183, .24), transparent 34%),
     var(--ivory);
 }
 
-/* Delicate stationery border */
-
-.timeline-screen::before {
+.celebration-timeline::before {
   content: '';
   position: absolute;
   z-index: -1;
-  inset: 1rem;
-  border: 1px solid rgba(169, 71, 47, 0.2);
-  border-radius: 160px 160px 4px 4px / 80px 80px 4px 4px;
+  inset: .65rem;
+  border: 1px solid rgba(169, 71, 47, .19);
+  border-radius: 100px 100px 3px 3px / 48px 48px 3px 3px;
   pointer-events: none;
 }
 
-.timeline-decoration {
+.timeline-ornament {
   position: absolute;
   z-index: -1;
-  color: rgba(169, 71, 47, 0.12);
+  color: rgba(169, 71, 47, .13);
   pointer-events: none;
   user-select: none;
 }
 
-.timeline-decoration--top {
-  top: 5%;
-  right: 5%;
-  font-size: clamp(4rem, 10vw, 8rem);
-  animation: decoration-float 7s ease-in-out infinite;
+.timeline-ornament--top {
+  top: 4%;
+  right: 4%;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  animation: ornament-drift 7s ease-in-out infinite;
 }
 
-.timeline-decoration--bottom {
-  bottom: 14%;
-  left: -1.5rem;
-  font-size: clamp(5rem, 12vw, 9rem);
-  transform: rotate(-35deg);
-  animation: decoration-float 8s ease-in-out infinite reverse;
+.timeline-ornament--bottom {
+  bottom: 3%;
+  left: -1.4rem;
+  font-size: clamp(4rem, 9vw, 7rem);
+  transform: rotate(-28deg);
+  animation: ornament-drift 8s ease-in-out infinite reverse;
 }
-
-/* Heading */
 
 .timeline-heading {
-  position: relative;
-  width: min(100%, 720px);
-  margin: 0 auto clamp(3.5rem, 8vw, 6.5rem);
+  flex: 0 0 auto;
+  width: min(100%, 48rem);
+  margin: 0 auto clamp(.8rem, 2.4svh, 1.5rem);
   text-align: center;
-  animation: timeline-fade-up 0.8s ease both;
+  animation: fade-up .65s ease both;
 }
 
 .timeline-kicker {
   display: block;
-  color: var(--terracotta);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  line-height: 1.6;
+  color: var(--muted);
+  font-size: clamp(.52rem, 1.4vw, .65rem);
+  font-weight: 600;
+  letter-spacing: .25em;
   text-transform: uppercase;
 }
 
 .timeline-heading h1 {
-  margin: 1rem 0 1.2rem;
+  margin: .35rem 0 .15rem;
   color: var(--terracotta);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.8rem, 7.5vw, 5.8rem);
+  font-size: clamp(2.15rem, 6vw, 4rem);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  letter-spacing: -.035em;
+  line-height: .98;
 }
 
-.timeline-heading h1 span {
-  color: #80634f;
-  font-style: italic;
-}
-
-.timeline-intro {
-  max-width: 32rem;
-  margin: 0 auto;
-  color: var(--body-text);
-  font-size: clamp(0.85rem, 1.6vw, 1rem);
-  line-height: 1.85;
-  text-wrap: pretty;
-}
-
-.heading-flower {
-  margin-top: 1.5rem;
-  color: #b56b4d;
-  font-size: 1.2rem;
-  animation: flower-turn 12s linear infinite;
-}
-
-/* Timeline spine */
-
-.timeline-track {
-  position: relative;
-  width: min(100%, 1000px);
-  margin: 0 auto;
-}
-
-.timeline-track::before {
-  content: '';
-  position: absolute;
-  top: 1.5rem;
-  bottom: 2rem;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #c99a7f 5%,
-    #c99a7f 95%,
-    transparent
-  );
-  transform: translateX(-50%);
-}
-
-/* Each item occupies a row with a centered marker */
-
-.timeline-item {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 4rem minmax(0, 1fr);
-  align-items: center;
-  min-height: 17rem;
-  padding: 0 0 3rem;
-  animation: timeline-fade-up 0.75s ease both;
-  animation-delay: calc(var(--item-index, 0) * 140ms);
-}
-
-.timeline-marker {
-  position: relative;
-  z-index: 2;
-  grid-column: 2;
-  grid-row: 1;
-  display: grid;
-  place-items: center;
-  justify-self: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  border: 1px solid #c99a7f;
-  border-radius: 50%;
-  color: var(--terracotta);
-  background: var(--ivory);
-  box-shadow: 0 0 0 0.45rem rgba(247, 239, 227, 0.85);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.timeline-card {
-  position: relative;
-  grid-column: 1;
-  grid-row: 1;
-  width: 100%;
-  max-width: 410px;
-  justify-self: end;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border: 1px solid rgba(169, 71, 47, 0.18);
-  border-radius: 5px 24px 24px 24px;
-  background: rgba(255, 253, 248, 0.9);
-  box-shadow: 0 14px 42px rgba(103, 75, 55, 0.065);
-  transition:
-    transform 250ms ease,
-    box-shadow 250ms ease,
-    border-color 250ms ease;
-}
-
-.timeline-card:hover {
-  border-color: rgba(169, 71, 47, 0.34);
-  box-shadow: 0 20px 48px rgba(103, 75, 55, 0.1);
-  transform: translateY(-3px);
-}
-
-.timeline-item--right .timeline-card {
-  grid-column: 3;
-  justify-self: start;
-  border-radius: 24px 5px 24px 24px;
-}
-
-.timeline-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.timeline-event-number {
-  color: var(--muted);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-}
-
-.timeline-event-icon {
-  display: grid;
-  flex: 0 0 2.25rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  border: 1px solid #ead8c8;
-  border-radius: 50%;
-  color: var(--terracotta);
-  background: #f8eee3;
-  font-size: 1.2rem;
-}
-
-.timeline-card h2 {
-  margin: 1rem 0 0.2rem;
-  color: var(--terracotta);
+.timeline-heading > p {
+  margin: .35rem 0 0;
+  color: var(--body);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.025em;
+  font-size: clamp(.9rem, 2.2vw, 1.25rem);
+  letter-spacing: .045em;
 }
 
-.timeline-subtitle {
-  margin: 0.65rem 0 0.8rem;
-  color: #8c694f;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.25rem;
-  font-style: italic;
-}
-
-.timeline-description {
-  margin: 0;
-  color: var(--body-text);
-  font-size: 0.84rem;
-  line-height: 1.8;
-  text-wrap: pretty;
-}
-
-.timeline-time {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid #ecdfd1;
-  color: var(--terracotta-dark);
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  line-height: 1.6;
-}
-
-.time-icon {
-  flex: 0 0 auto;
-  font-size: 1rem;
-  line-height: 1.1;
-}
-
-/* Wedding image placeholder */
-
-.timeline-image-placeholder {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  min-height: 9rem;
-  margin-top: 1.25rem;
-  padding: 1.25rem;
-  overflow: hidden;
-  border: 1px dashed rgba(169, 71, 47, 0.38);
-  border-radius: 14px;
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(232, 199, 183, 0.4),
-      transparent 65%
-    ),
-    #f8eee3;
-  text-align: center;
-}
-
-.timeline-image-placeholder::before,
-.timeline-image-placeholder::after {
-  content: '';
-  position: absolute;
-  width: 6rem;
-  height: 6rem;
-  border: 1px solid rgba(169, 71, 47, 0.12);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.timeline-image-placeholder::before {
-  top: -3rem;
-  left: -2rem;
-}
-
-.timeline-image-placeholder::after {
-  right: -2rem;
-  bottom: -3rem;
-}
-
-.placeholder-ornament {
-  color: #b56b4d;
-  font-size: 2.2rem;
-  animation: placeholder-float 4s ease-in-out infinite;
-}
-
-.placeholder-label {
-  color: var(--terracotta);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-}
-
-.placeholder-note {
-  color: var(--muted);
-  font-size: 0.7rem;
-  line-height: 1.5;
-}
-
-/* Venue at the bottom */
-
-.timeline-venue {
-  position: relative;
-  width: min(100%, 650px);
-  margin: clamp(2rem, 6vw, 4rem) auto 0;
-  text-align: center;
-  animation: timeline-fade-up 0.8s ease both;
-  animation-delay: 400ms;
-}
-
-.venue-ornament {
+.heading-divider,
+.venue-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.6rem;
-  color: #b56b4d;
-  font-size: 0.9rem;
+  gap: .55rem;
+  margin: .55rem auto 0;
+  color: var(--terracotta);
+  font-size: .75rem;
 }
 
-.venue-ornament span {
+.heading-divider span,
+.venue-divider span {
   display: block;
-  width: clamp(2rem, 8vw, 5rem);
+  width: clamp(1.5rem, 6vw, 3rem);
   height: 1px;
-  background: #c99a7f;
+  background: var(--line);
 }
 
-.timeline-venue h2 {
-  margin: 0.8rem 0 1.5rem;
-  color: var(--terracotta);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.25rem, 5.5vw, 3.8rem);
-  font-weight: 400;
-  line-height: 1;
-}
+/* Haldi → Cocktail Party */
 
-.timeline-venue h2 em {
-  color: #80634f;
-  font-weight: 400;
-}
-
-.venue-card {
-  width: min(100%, 440px);
+.timeline-flow {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  width: min(100%, 54rem);
   margin: 0 auto;
-  padding: 1.75rem 1.5rem;
-  border: 1px solid rgba(169, 71, 47, 0.2);
-  border-radius: 20px 20px 20px 5px;
-  background: rgba(255, 253, 248, 0.82);
-  box-shadow: 0 12px 38px rgba(103, 75, 55, 0.06);
+  row-gap: clamp(.6rem, 2svh, 1.25rem);
 }
 
-.venue-icon {
-  display: block;
-  margin-bottom: 0.6rem;
+.timeline-top-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(1.6rem, 6vw, 4.2rem) minmax(0, 1fr);
+  align-items: start;
+}
+
+.timeline-event {
+  min-width: 0;
+  text-align: center;
+  animation: fade-up .7s ease both;
+  padding: 0.5rem;
+}
+
+.timeline-event--haldi { animation-delay: 80ms; }
+.timeline-event--cocktail { animation-delay: 180ms; }
+.timeline-event--wedding { animation-delay: 280ms; }
+
+.event-number {
+  display: grid;
+  place-items: center;
+  width: clamp(2.2rem, 5.5vw, 3.15rem);
+  height: clamp(2.2rem, 5.5vw, 3.15rem);
+  margin: 0 auto .35rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
   color: var(--terracotta);
-  font-size: 1.5rem;
+  background: rgba(255, 253, 248, .28);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
 }
 
-.venue-card h3 {
+.timeline-event h2 {
   margin: 0;
   color: var(--terracotta);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 500;
+  font-size: clamp(1.45rem, 4.2vw, 2.45rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.event-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  margin: .3rem 0;
+  color: #b56b4d;
+  font-size: .65rem;
+}
+
+.event-divider::before,
+.event-divider::after {
+  content: '';
+  display: block;
+  width: clamp(1.1rem, 3vw, 2rem);
+  height: 1px;
+  background: #d8b7a0;
+}
+
+.timeline-event p {
+  max-width: 16rem;
+  margin: 0 auto;
+  color: var(--body);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(.82rem, 2.1vw, 1.12rem);
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.event-time {
+  display: block;
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: clamp(.43rem, 1.15vw, .58rem);
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.45;
+  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 
-.venue-card p {
-  margin: 0.6rem 0 1rem;
-  color: var(--body-text);
-  font-size: 0.85rem;
-  line-height: 1.7;
-}
+/* Forward arrow */
 
-.venue-note {
-  display: inline-block;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid #ead8c8;
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.56rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.venue-signoff {
-  margin: 1.8rem 0 0;
-  color: #80634f;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem;
-  font-style: italic;
-}
-
-.venue-signoff span {
+.flow-forward {
+  display: flex;
+  align-items: center;
+  align-self: start;
+  height: clamp(2.2rem, 5.5vw, 3.15rem);
+  padding-top: .05rem;
   color: var(--terracotta);
+}
+
+.flow-forward span {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+.flow-forward b {
+  margin-left: -.35rem;
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* Return arrow leading to the wedding */
+
+.flow-return {
+  position: relative;
+  width: 50%;
+  height: clamp(2rem, 4svh, 2.6rem);
+  margin: 0 0 0 auto;
+  color: var(--terracotta);
+}
+
+.return-diagonal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.return-diagonal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--line);
+  transform: rotate(12deg);
+  transform-origin: left center;
+}
+
+.flow-return b {
+  position: absolute;
+  left: -0.5rem;
+  bottom: -0.85rem;
+  z-index: 2;
+  padding: 0;
+  color: var(--terracotta);
+  background: transparent;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  transform: rotate(-45deg);
+}
+
+.timeline-event--wedding {
+  width: min(76%, 30rem);
+  margin: .35rem auto 0;
+}
+
+.timeline-event--wedding .event-number {
+  margin-bottom: .3rem;
+}
+
+.timeline-event--wedding p {
+  max-width: 24rem;
+}
+
+/* Venue */
+
+.timeline-venue {
+  flex: 0 0 auto;
+  width: min(100%, 32rem);
+  margin: clamp(.65rem, 2svh, 1.25rem) auto 0;
+  text-align: center;
+  animation: fade-up .7s ease 350ms both;
+}
+
+.venue-divider {
+  margin: 0 auto .55rem;
+}
+
+.timeline-venue h2 {
+  margin: .35rem 0 .1rem;
+  color: var(--terracotta);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.25rem, 3.2vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1.05;
+}
+
+.timeline-venue p {
+  margin: .15rem 0 0;
+  color: var(--muted);
+  font-size: clamp(.6rem, 1.5vw, .75rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
 }
 
 /* Animations */
 
-@keyframes timeline-fade-up {
+@keyframes fade-up {
   from {
     opacity: 0;
-    translate: 0 16px;
+    translate: 0 10px;
   }
 
   to {
@@ -457,175 +340,346 @@
   }
 }
 
-@keyframes placeholder-float {
-  0%,
-  100% {
-    translate: 0 0;
-    rotate: -4deg;
-  }
-
-  50% {
-    translate: 0 -5px;
-    rotate: 4deg;
-  }
-}
-
-@keyframes decoration-float {
-  0%,
-  100% {
+@keyframes ornament-drift {
+  0%, 100% {
     translate: 0 0;
   }
 
   50% {
-    translate: 0 -10px;
+    translate: 0 -7px;
   }
 }
 
-@keyframes flower-turn {
-  from {
-    rotate: 0deg;
+/* Mobile layout */
+
+@media (max-width: 480px) {
+  .celebration-timeline {
+    padding:
+      max(.7rem, env(safe-area-inset-top))
+      .85rem
+      max(.65rem, env(safe-area-inset-bottom));
   }
 
-  to {
-    rotate: 360deg;
-  }
-}
-
-/* Tablet and smaller screens */
-
-@media (max-width: 700px) {
-  .timeline-screen {
-    padding-right: 1.15rem;
-    padding-left: 1.15rem;
-  }
-
-  .timeline-screen::before {
-    inset: 0.65rem;
-    border-radius: 100px 100px 4px 4px / 50px 50px 4px 4px;
+  .celebration-timeline::before {
+    inset: .4rem;
+    border-radius: 65px 65px 3px 3px / 32px 32px 3px 3px;
+    background: #FEFCF6;
+    margin: 0.8rem;
   }
 
   .timeline-heading {
-    margin-bottom: 2.5rem;
+    margin-bottom: clamp(.5rem, 1.5svh, .9rem);
+  }
+
+  .timeline-kicker {
+    font-size: .48rem;
+    letter-spacing: .18em;
   }
 
   .timeline-heading h1 {
-    font-size: clamp(2.65rem, 9vw, 4.2rem);
+    margin-top: .25rem;
+    font-size: clamp(2rem, 8.6vw, 2.7rem);
   }
 
-  .timeline-track {
-    width: 100%;
+  .timeline-heading > p {
+    font-size: .85rem;
   }
 
-  .timeline-track::before {
-    left: 1.35rem;
-    transform: none;
+  .heading-divider {
+    margin-top: .35rem;
   }
 
-  .timeline-item,
-  .timeline-item--right {
-    grid-template-columns: 2.7rem minmax(0, 1fr);
-    min-height: auto;
-    padding-bottom: 1.75rem;
+  .timeline-top-row {
+    grid-template-columns: minmax(0, 1fr) 1.35rem minmax(0, 1fr);
   }
 
-  .timeline-marker {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: start;
-    justify-self: start;
-    width: 2.7rem;
-    height: 2.7rem;
-    box-shadow: 0 0 0 0.3rem rgba(247, 239, 227, 0.9);
+  .event-number {
+    width: 2.05rem;
+    height: 2.05rem;
+    margin-bottom: .25rem;
+    font-size: 1rem;
   }
 
-  .timeline-card,
-  .timeline-item--right .timeline-card {
-    grid-column: 2;
-    grid-row: 1;
-    width: 95%;
-    max-width: none;
-    min-width: 0;
-    justify-self: stretch;
-    margin-left: 0;
-    border-radius: 5px 20px 20px 20px;
+  .timeline-event h2 {
+    font-size: clamp(1.25rem, 5.5vw, 1.7rem);
   }
 
-  .timeline-card h2 {
-    font-size: clamp(2rem, 7vw, 2.7rem);
+  .event-divider {
+    margin: .2rem 0;
+    font-size: .55rem;
+  }
+
+  .event-divider::before,
+  .event-divider::after {
+    width: .8rem;
+  }
+
+  .timeline-event p {
+    max-width: 10.5rem;
+    font-size: clamp(.76rem, 3.25vw, .9rem);
+    line-height: 1.17;
+  }
+
+  .event-time {
+    margin-top: .35rem;
+    font-size: .4rem;
+    letter-spacing: .07em;
+  }
+
+  .flow-forward {
+    height: 2.05rem;
+  }
+
+  .flow-forward b {
+    font-size: 1.35rem;
+  }
+
+  .flow-return {
+    height: clamp(1.1rem, 2.5svh, 1.55rem);
+  }
+
+  .timeline-event--wedding {
+    width: 82%;
+    margin-top: .2rem;
+  }
+
+  .timeline-event--wedding .event-number {
+    width: 1.95rem;
+    height: 1.95rem;
+  }
+
+  .timeline-event--wedding h2 {
+    font-size: clamp(1.45rem, 6vw, 1.8rem);
+  }
+
+  .timeline-event--wedding p {
+    max-width: 17rem;
+  }
+
+  .timeline-event--wedding .event-time {
+    margin-top: .3rem;
   }
 
   .timeline-venue {
-    margin-top: 1rem;
+    margin-top: clamp(.5rem, 1.5svh, .8rem);
   }
+
+  .venue-divider {
+    margin-bottom: .3rem;
+  }
+
+  .timeline-venue h2 {
+    font-size: 1.2rem;
+    letter-spacing: .1em;
+  }
+
+  .timeline-venue p {
+    font-size: .55rem;
+  }
+
+  .timeline-ornament--top {
+    top: 3%;
+    right: 3%;
+    font-size: 2.2rem;
+  }
+
+  .timeline-ornament--bottom {
+    bottom: 2%;
+    font-size: 4rem;
+  }
+
+  .timeline-flow {
+  row-gap: clamp(.5rem, 1.5svh, .9rem);
 }
 
-/* Narrow phones */
+.timeline-step {
+  width: 50%;
+}
 
-@media (max-width: 380px) {
-  .timeline-screen {
-    padding-right: 0.9rem;
-    padding-left: 0.9rem;
+.timeline-step--haldi,
+.timeline-step--wedding {
+  padding-right: .5rem;
+}
+
+.timeline-step--cocktail {
+  padding-left: .5rem;
+}
+
+.connector--right {
+  top: 1.1rem;
+  width: calc(100% - 1rem);
+}
+
+.connector--left {
+  top: 1.1rem;
+  width: calc(100% - 1rem);
+}
+
+.connector--down {
+  top: -.7rem;
+  height: .7rem;
+}
+}
+
+/* Compress vertical spacing on shorter phone screens. */
+
+@media (max-height: 720px) {
+  .celebration-timeline {
+    padding-top: .55rem;
+    padding-bottom: .5rem;
   }
 
-  .timeline-screen::before {
-    inset: 0.45rem;
+  .timeline-heading {
+    margin-bottom: .45rem;
   }
 
   .timeline-heading h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 6vh, 2.8rem);
   }
 
-  .timeline-intro {
-    font-size: 0.82rem;
+  .timeline-heading > p {
+    font-size: .78rem;
   }
 
-  .timeline-track::before {
-    left: 1.15rem;
+  .heading-divider {
+    margin-top: .2rem;
   }
 
-  .timeline-item,
-  .timeline-item--right {
-    grid-template-columns: 2.3rem minmax(0, 1fr);
-    padding-bottom: 1.25rem;
+  .timeline-event p {
+    line-height: 1.12;
   }
 
-  .timeline-marker {
-    width: 2.3rem;
-    height: 2.3rem;
-    font-size: 0.6rem;
+  .flow-return {
+    height: 1rem;
   }
 
-  .timeline-card,
-  .timeline-item--right .timeline-card {
-    padding: 1.05rem;
-  }
-
-  .timeline-card h2 {
-    font-size: 1.9rem;
-  }
-
-  .timeline-description {
-    font-size: 0.8rem;
-  }
-
-  .timeline-time {
-    font-size: 0.59rem;
+  .timeline-venue {
+    margin-top: .35rem;
   }
 }
 
-/* Respect reduced-motion preferences */
-
 @media (prefers-reduced-motion: reduce) {
   .timeline-heading,
-  .timeline-item,
+  .timeline-event,
   .timeline-venue,
-  .heading-flower,
-  .timeline-decoration,
-  .placeholder-ornament {
+  .timeline-ornament {
     animation: none !important;
   }
+}
 
-  .timeline-card {
-    transition: none;
-  }
+.timeline-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  min-width: 0;
+}
+
+.timeline-step--haldi {
+  grid-row: 1;
+  justify-self: start;
+  padding-right: 1rem;
+}
+
+.timeline-step--cocktail {
+  grid-row: 2;
+  justify-self: end;
+  padding-left: 1rem;
+}
+
+.timeline-step--wedding {
+  grid-row: 3;
+  justify-self: start;
+  padding-right: 1rem;
+}
+
+.timeline-event {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  animation: fade-up .7s ease both;
+}
+
+.timeline-step--haldi .timeline-event {
+  animation-delay: 80ms;
+}
+
+.timeline-step--cocktail .timeline-event {
+  animation-delay: 180ms;
+}
+
+.timeline-step--wedding .timeline-event {
+  animation-delay: 280ms;
+}
+
+/* Haldi flows horizontally to Cocktail Party */
+.timeline-connector {
+  position: absolute;
+  display: block;
+  background: var(--line);
+}
+
+
+/* Cocktail Party flows downward */
+.connector--down {
+  top: -1rem;
+  left: 50%;
+  width: 1px;
+  height: 1rem;
+}
+
+/* Haldi → Cocktail Party */
+.connector--right {
+  position: absolute;
+  top: 2.05rem;
+  left: calc(100% - 0.25rem);
+  width: clamp(2rem, 5vw, 4rem);
+  height: 0px;
+  background: var(--line);
+  transform: rotate(25deg);
+  transform-origin: left center;
+}
+
+.connector--right::after {
+  content: '↘';
+  position: absolute;
+  right: -0.45rem;
+  top: -0.85rem;
+  color: var(--terracotta);
+  background: transparent;
+  font-size: 1.2rem;
+}
+
+/* Cocktail Party → The Wedding */
+.connector--left {
+  position: absolute;
+  top: auto;
+  right: calc(100% - 0.25rem);
+  bottom: 2.05rem;
+  width: clamp(2rem, 5vw, 4rem);
+  height: 0px;
+  background: var(--line);
+  transform: rotate(-25deg);
+  transform-origin: right center;
+}
+
+.connector--left::before {
+  content: '↙';
+  position: absolute;
+  left: -0.45rem;
+  top: -0.65rem;
+  color: var(--terracotta);
+  background: transparent;
+  font-size: 1.2rem;
+}
+
+/* Remove the vertical connector */
+.connector--down {
+  display: none;
+}
+
+.venue-link{
+    font-size: 0.8rem;
 }

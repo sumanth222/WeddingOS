@@ -3,8 +3,8 @@ id: "fbabb86c-34f1-4d6c-a5cd-e06d3bc80372"
 title: "Git hotspot: src/app/scenes/events/events.scss"
 kind: code
 created: 2026-10-01
-updated: 2026-10-01
-review_after: 2026-10-31
+updated: 2026-10-19
+review_after: 2026-10-19
 status: proposed
 tags: ["code", "git", "hotspot"]
 filenames: ["src/app/scenes/events/events.scss"]
@@ -14,8 +14,9 @@ source_tool: "buddy_memory_lifecycle:git"
 source_confidence: 0.740
 source_commit: "f373f200a9cd"
 source_content_hash: "a93838dc8e8d6c434c87efc0cf1e7e1b46743c901cc3a3f3724788446854d389"
-occurrences: 2
-last_observed: "2026-10-01T17:41:41.929399+00:00"
+review_needed: true
+occurrences: 3
+last_observed: "2026-10-19T06:49:33.460989+00:00"
 ---
 
 Git hotspot: src/app/scenes/events/events.scss

@@ -1,115 +1,43 @@
-<!-- <section id="events" class="events-scene">
-  <div class="events-stage">
-    <div class="ambient-glow"></div>
-    <div class="grid"></div>
-
-    <header class="events-header">
-      <div>
-        <span class="system-label">THE WEDDING</span>
-        <span class="section-label">/ CELEBRATION</span>
-      </div>
-
-      <div class="connection">
-        <span class="dot"></span>
-        LIVE
-      </div>
-    </header>
-
-    <div class="events-intro">
-      <span class="eyebrow">SAVE THE DATE</span>
-      <h1>A day full of<br />beautiful moments.</h1>
-    </div>
-
-    <div class="event-system">
-      @for (event of events; track event.id; let i = $index) {
-        <article class="event-card" [attr.data-index]="i">
-          <div class="event-top">
-            <span class="event-number">{{ event.number }}</span>
-            <span class="event-type">{{ event.type }}</span>
-          </div>
-
-          <div class="event-icon">
-            <span>{{ event.icon }}</span>
-          </div>
-
-          <div class="event-content">
-            <h2>{{ event.title }}</h2>
-            <div class="event-date">{{ event.date }}</div>
-            <div class="event-time">{{ event.time }}</div>
-          </div>
-
-          <div class="event-venue">
-            <span class="venue-label">LOCATION</span>
-            <span class="venue-name">{{ event.venue }}</span>
-          </div>
-
-          <p class="event-description">{{ event.description }}</p>
-
-          <div class="event-footer">
-            <span>EVENT STATUS</span>
-            <span class="status">CONFIRMED</span>
-          </div>
-        </article>
-      }
-    </div>
-
-    <div class="events-ending">
-      <span class="eyebrow">WITH LOVE</span>
-      <h2>We saved you a place.</h2>
-      <p>
-        The best celebrations are the ones shared with our favourite people.
-      </p>
-    </div>
-
-    <div class="scene-progress">
-      <span>04</span>
-      <div class="progress-line"></div>
-      <span>04</span>
-    </div>
-  </div>
-</section> -->
-
 <section class="invitation-letter" aria-labelledby="invitation-title">
   <!-- Decorative artwork stays in its own left-side column. -->
-  <div class="letter-art" aria-hidden="true">
-    <!-- <div class="letter-banana-leaves"></div>
-    <div class="letter-banana-detail"></div> -->
-  </div>
 
   <div class="letter-leaf leaf-one" aria-hidden="true">❧</div>
-  <div class="letter-leaf leaf-two" aria-hidden="true">✿</div>
 
   <div class="letter-content">
-    <span class="letter-kicker">A LITTLE NOTE, FROM OUR HEARTS</span>
-
-    <div class="letter-flower" aria-hidden="true">✿</div>
 
     <h2 id="invitation-title">
       It wouldn’t be the same<br />
       without you.
     </h2>
 
-    <p class="letter-greeting">To our favourite people,</p>
+    <div class="letter-flower" aria-hidden="true">
+      <div class="bandhani-2 btr"></div>
+    </div>
+
 
     <p class="letter-copy">
-      Some days are special, but the people we share them with make them
-      unforgettable. And honestly, we can’t imagine celebrating this new
-      chapter without you!
+      Some days are special, but the people we share them with make them unforgettable. And we can’t imagine celebrating this new chapter without you.
     </p>
 
+    <div class="letter-flower" aria-hidden="true">
+      <div class="bandhani-2"></div>
+    </div>
+
     <p class="letter-copy">
-      So, come for the wedding, stay for the food, join in the laughter,
-      dance like nobody’s watching (we promise not to judge your moves 😄),
-      and help us make memories we’ll be smiling about for years to come.
+      As we bring our favourite people together to celebrate this special time in our lives, we look forward to sharing these moments with you and making memories we’ll cherish.
     </p>
 
     <div class="letter-signoff">
-      With lots of love,
-      <span>Dheeraj &amp; Drashti</span>
+      With love,
+      <span>Drashti &amp; Dheeraj</span>
+    </div>
+
+    <div class="letter-flower" aria-hidden="true">
+      <div class="bandhani-2 btb"></div>
     </div>
 
     <a class="rsvp-cta" href="#rsvp-form">
-      <span>Count me in!</span>
+      <span>Count me in</span>
     </a>
   </div>
 </section>
@@ -188,6 +116,21 @@
           This is your arrival date in Hyderabad, not the wedding date.
         </p>
 
+        <label for="departure-date">
+          Until when are you planning to stay in Hyderabad?
+        </label>
+
+        <input
+          id="departure-date"
+          name="departureDate"
+          type="date"
+          required
+        />
+
+        <p class="field-hint">
+          This helps us plan the celebrations and make your stay a little easier.
+</p>
+
         <button class="rsvp-submit" type="submit">
           Send RSVP
         </button>
@@ -220,6 +163,10 @@
             <dt>Contact</dt>
             <dd>{{ rsvpDetails.phone }}</dd>
           </div>
+          <div>
+            <dt>Leaving Hyderabad</dt>
+            <dd>{{ rsvpDetails.departureDate }}</dd>
+          </div>
         </dl>
 
         <p class="privacy-note">
@@ -239,6 +186,6 @@
   </div>
 
   <p class="rsvp-footer">
-    Made with love, for a day full of love <span aria-hidden="true">♡</span>
+    Made with love, for a day full of love <span aria-hidden="true"></span>
   </p>
 </section>

@@ -367,7 +367,7 @@
   isolation: isolate;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   min-height: 100svh;
   padding: clamp(64px, 8vw, 108px) clamp(22px, 6vw, 84px);
   overflow: hidden;
@@ -379,9 +379,11 @@
   //     transparent 38%
   //   ),
   //   #f5eadb;
-  background-image: url("../../../../public/images/1.svg");
+  background-image: url("../../../../public/images/5.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-color: #F6EDE2;
 }
 
 .invitation-letter::before {
@@ -441,10 +443,8 @@
   position: relative;
   z-index: 2;
   width: min(66%, 650px);
-  margin-left: auto;
-  text-align: right;
-  animation: letter-rise 0.9s cubic-bezier(0.2, 0.75, 0.25, 1) both;
-  padding-right: 1rem;
+  margin-left: 0%;
+  text-align: center;
 }
 
 .letter-kicker {
@@ -462,7 +462,6 @@
   margin: 18px 0 8px;
   color: #b56b4d;
   font-size: 26px;
-  animation: flower-sway 4s ease-in-out infinite;
 }
 
 .invitation-letter h2,
@@ -554,7 +553,6 @@
   color: rgba(169, 71, 47, 0.14);
   font-size: clamp(4rem, 10vw, 8rem);
   pointer-events: none;
-  animation: leaf-drift 7s ease-in-out infinite;
 }
 
 .leaf-one {
@@ -890,7 +888,7 @@
 
   .invitation-letter {
     padding-right: 28px;
-    padding-left: 20px;
+    padding-left: 2rem;
   }
 
   .letter-art {
@@ -996,6 +994,8 @@
     min-height: 102svh;
     align-items: center;
     padding: 76px 18px 64px;
+    padding-left: 2rem;
+    width: 100%;
   }
 
   .invitation-letter::before {
@@ -1025,10 +1025,11 @@
    * hard-coded margin that breaks on narrow phones.
    */
   .letter-content {
-    width: 72%;
+    width: 100%;
     max-width: 440px;
-    margin-left: auto;
-    text-align: right;
+    margin-left: 0%;
+    text-align: center;
+    margin-top: 7rem;
   }
 
   .letter-kicker {
@@ -1039,11 +1040,16 @@
   .letter-flower {
     margin: 12px 0 7px;
     font-size: 22px;
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .invitation-letter h2 {
     font-size: clamp(2.25rem, 8.5vw, 3.5rem);
     line-height: 0.98;
+    margin-bottom: 2rem;
+    width: 100%;
+    margin-top: 2rem;
   }
 
   .letter-greeting {
@@ -1061,6 +1067,8 @@
 
   .letter-signoff {
     font-size: 1.15rem;
+    position: relative;
+    top: 1rem;
   }
 
   .letter-signoff span {
@@ -1083,8 +1091,8 @@
 
   .leaf-two {
     right: 3%;
-    bottom: 3%;
     font-size: 2.8rem;
+    bottom: 0%;
   }
 
   .rsvp-section {
@@ -1173,4 +1181,45 @@
   .rsvp-submit {
     transition: none !important;
   }
+}
+
+.bandhani{
+  background-image: url("../../../../public/images/kalash-1.svg");
+  height: 3rem;
+  width: 3rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+.bandhani-2{
+  background-image: url("../../../../public/images/bandhani-2.svg");
+  height: 4.5rem;
+  width: 4.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  position: absolute;
+  right: 81%;
+  top: 66%;
+}
+
+.btr{
+  position: absolute;
+  right: 0%;
+  top: 15%;
+}
+
+.btb{
+  position: absolute;
+  right: 30%;
+  top: 108%;
+}
+
+.bam{
+  bottom: 54%;
+  right: 14rem;
+  height: 7rem;
+  width: 7rem;
+  opacity: 0.8;
 }

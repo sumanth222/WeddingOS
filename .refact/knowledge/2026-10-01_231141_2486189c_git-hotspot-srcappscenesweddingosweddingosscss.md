@@ -14,8 +14,8 @@ source_tool: "buddy_memory_lifecycle:git"
 source_confidence: 0.740
 source_commit: "f373f200a9cd"
 source_content_hash: "8d44306fdfd6b2bd0588566b8ff44d3abad71acfaa6a6ec2140fc93aaafac71d"
-occurrences: 2
-last_observed: "2026-10-01T17:41:41.926317+00:00"
+occurrences: 3
+last_observed: "2026-10-19T06:49:33.443993+00:00"
 ---
 
 Git hotspot: src/app/scenes/wedding-os/wedding-os.scss
