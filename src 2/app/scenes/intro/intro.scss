@@ -1,0 +1,278 @@
+.intro {
+  position: relative;
+  height: 220vh;
+  background: #fff9f2;
+}
+
+.intro-stage {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(185, 201, 168, 0.22),
+      transparent 35%
+    ),
+    #fff9f2;
+}
+
+.intro-copy {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.text-block {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+
+  color: var(--cream);
+
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+
+  letter-spacing: -0.02em;
+}
+
+.text-one,
+.text-two {
+  font-size: clamp(3rem, 7vw, 7rem);
+}
+
+.text-three,
+.text-four {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+.text-block span {
+  display: block;
+}
+
+.text-three span:last-child,
+.text-four span:last-child {
+  color: var(--gold);
+}
+
+.core-light {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.5);
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.7),
+    0 0 80px rgba(189, 133, 137, 0.5),
+    0 0 160px rgba(189, 133, 137, 0.25);
+
+  opacity: 0;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+
+  z-index: 20;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+}
+
+.scroll-hint {
+  position: absolute;
+
+  bottom: 8rem;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 30;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  color: rgba(245, 241, 232, 0.45);
+
+  font-size: 9px;
+  letter-spacing: 0.3em;
+
+  transition: opacity 0.5s ease;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 55px;
+
+  background: rgba(245, 241, 232, 0.12);
+
+  overflow: hidden;
+}
+
+.scroll-progress {
+  width: 100%;
+  height: 100%;
+
+  background: var(--gold);
+
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+/* Pastel botanical redesign overrides */
+:host { color: #555747; }
+.intro, .the-two, .memories, .events-scene { background: #fff9f2; color: #555747; }
+.intro-stage, .two-stage, .memories-stage, .events-stage { background-color: #fff9f2; color: #555747; }
+.ambient-glow, .ambient { background: radial-gradient(ellipse, rgba(244,220,217,.55), rgba(220,231,214,.24) 45%, transparent 72%); }
+.grid { opacity: .18; background-image: linear-gradient(rgba(126,145,111,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(126,145,111,.10) 1px, transparent 1px); }
+.event-card { background: rgba(255,255,255,.72); border-color: rgba(126,145,111,.25); box-shadow: 0 16px 45px rgba(111,91,75,.08); }
+.event-description, .welcome p, .memory-heading p { color: #777969; }
+
+.botanical-orbit { position:absolute; inset:0; display:flex; align-items:center; justify-content:space-around; color:#9caf91; opacity:.28; font-size:clamp(2rem,8vw,5rem); pointer-events:none; }
+.botanical-orbit span:nth-child(2) { color:#c98f94; transform:rotate(-20deg); font-size:clamp(3rem,12vw,7rem); }
+.intro-stage::before { content:""; position:absolute; inset:8% 7%; border:1px solid rgba(189,133,137,.25); border-radius:48% 48% 4px 4px; pointer-events:none; }
+.vignette { background:linear-gradient(180deg,rgba(255,249,242,.08),rgba(255,249,242,.12)); }
+.scroll-hint { color:#8a8c7b; }
+
+
+/* Gentle, garden-inspired motion for the opening scene */
+.intro-stage {
+  isolation: isolate;
+}
+
+.intro-stage::before {
+  z-index: 2;
+  box-shadow: inset 0 0 70px rgba(189, 133, 137, 0.06);
+  animation: arch-breathe 7s ease-in-out infinite alternate;
+}
+
+.intro-stage::after {
+  content: "";
+  position: absolute;
+  width: min(64vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 220, 217, 0.38), rgba(220, 231, 214, 0.2) 42%, transparent 72%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 1;
+  animation: glow-drift 9s ease-in-out infinite alternate;
+}
+
+.intro-copy { z-index: 10; }
+
+.text-block {
+  padding-inline: 1rem;
+  text-wrap: balance;
+  text-shadow: 0 8px 30px rgba(111, 91, 75, 0.06);
+}
+
+.text-three span:last-child,
+.text-four span:last-child {
+  font-style: italic;
+}
+
+.botanical-orbit { z-index: 3; }
+.botanical-orbit span { display: inline-block; will-change: transform; }
+
+.floating-petals {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  color: #c98f94;
+}
+
+.floating-petals span {
+  position: absolute;
+  display: block;
+  font-family: Georgia, serif;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  opacity: 0.45;
+  will-change: transform, opacity;
+}
+
+.floating-petals span:nth-child(1) { left: 15%; top: 24%; color: #9caf91; font-size: 1.5rem; }
+.floating-petals span:nth-child(2) { left: 26%; top: 68%; font-size: 2rem; }
+.floating-petals span:nth-child(3) { right: 17%; top: 26%; color: #9caf91; font-size: 2.1rem; }
+.floating-petals span:nth-child(4) { right: 28%; top: 72%; font-size: 1.8rem; }
+.floating-petals span:nth-child(5) { right: 12%; top: 57%; color: #9caf91; font-size: 1.3rem; }
+
+.core-light {
+  z-index: 6;
+  width: 9px;
+  height: 9px;
+  background: #fffdf8;
+  box-shadow: 0 0 20px rgba(201, 143, 148, .45), 0 0 65px rgba(201, 143, 148, .24), 0 0 95px rgba(156, 175, 145, .18);
+}
+
+.scroll-hint { z-index: 30; }
+.scroll-line { background: rgba(126, 145, 111, 0.2); }
+.scroll-progress { background: linear-gradient(to bottom, #c98f94, #9caf91); }
+
+@keyframes arch-breathe {
+  from { border-color: rgba(189, 133, 137, 0.18); transform: scale(0.995); }
+  to { border-color: rgba(156, 175, 145, 0.42); transform: scale(1); }
+}
+
+@keyframes glow-drift {
+  from { transform: translate3d(-4%, 1%, 0) scale(0.96); opacity: 0.72; }
+  to { transform: translate3d(4%, -2%, 0) scale(1.05); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .intro { height: 190vh; }
+  .intro-stage::before { inset: 7% 5%; }
+  .scroll-hint { bottom: 4.5rem; font-size: 8px; }
+  .floating-petals span:nth-child(2) { left: 12%; }
+  .floating-petals span:nth-child(4) { right: 12%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-stage::before, .intro-stage::after { animation: none !important; }
+}

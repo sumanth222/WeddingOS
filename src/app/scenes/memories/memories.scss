@@ -4,9 +4,9 @@
   /*
    * Give the photos enough room to breathe.
    */
-  height: 900vh;
+  height: 350vh;
 
-  background: #050505;
+  background: #fff9f2;
 
   color: var(--cream);
 }
@@ -25,10 +25,10 @@
   background:
     radial-gradient(
       circle at 50% 45%,
-      rgba(201, 169, 110, 0.055),
+      rgba(189, 133, 137, 0.055),
       transparent 50%
     ),
-    #050505;
+    #fff9f2;
 }
 
 
@@ -53,7 +53,7 @@
   background:
     radial-gradient(
       circle,
-      rgba(201, 169, 110, 0.1),
+      rgba(189, 133, 137, 0.1),
       transparent 68%
     );
 
@@ -225,7 +225,7 @@
 
   overflow: hidden;
 
-  background: #0a0a0a;
+  background: #f8eee8;
 
   box-shadow:
     0 25px 80px
@@ -399,3 +399,12 @@
   background:
     rgba(245, 241, 232, 0.25);
 }
+
+/* Pastel botanical redesign overrides */
+:host { color: #555747; }
+.intro, .the-two, .memories, .events-scene { background: #fff9f2; color: #555747; }
+.intro-stage, .two-stage, .memories-stage, .events-stage { background-color: #fff9f2; color: #555747; }
+.ambient-glow, .ambient { background: radial-gradient(ellipse, rgba(244,220,217,.55), rgba(220,231,214,.24) 45%, transparent 72%); }
+.grid { opacity: .18; background-image: linear-gradient(rgba(126,145,111,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(126,145,111,.10) 1px, transparent 1px); }
+.event-card { background: rgba(255,255,255,.72); border-color: rgba(126,145,111,.25); box-shadow: 0 16px 45px rgba(111,91,75,.08); }
+.event-description, .welcome p, .memory-heading p { color: #777969; }

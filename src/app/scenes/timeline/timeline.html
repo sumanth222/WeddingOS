@@ -1,0 +1,87 @@
+<section class="timeline-screen" aria-labelledby="timeline-title">
+  <div class="timeline-decoration timeline-decoration--top" aria-hidden="true">
+    ✿
+  </div>
+  <div class="timeline-decoration timeline-decoration--bottom" aria-hidden="true">
+    ❧
+  </div>
+
+  <header class="timeline-heading">
+    <span class="timeline-kicker">THE CELEBRATIONS</span>
+
+    <h1 id="timeline-title">
+      Three moments,<br />
+      <span>one beautiful beginning.</span>
+    </h1>
+
+    <div class="heading-flower" aria-hidden="true">✦</div>
+  </header>
+
+  <div class="timeline-track" aria-label="Wedding event timeline">
+    @for (event of events; track event.id; let i = $index) {
+      <article
+        class="timeline-item"
+        [class.timeline-item--right]="i % 2 === 1"
+        [class.timeline-item--wedding]="event.image"
+        [style.--item-index]="i"
+      >
+        <div class="timeline-marker" aria-hidden="true">
+          <span>{{ event.number }}</span>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-card-top">
+            <span class="timeline-event-number">MOMENT {{ event.number }}</span>
+            <span class="timeline-event-icon" aria-hidden="true">
+              {{ event.icon }}
+            </span>
+          </div>
+
+          <h2>{{ event.name }}</h2>
+          <p class="timeline-subtitle">{{ event.subtitle }}</p>
+          <p class="timeline-description">{{ event.description }}</p>
+
+          @if (event.image) {
+            <div class="timeline-image-placeholder" aria-label="Wedding image placeholder">
+              <div class="placeholder-ornament" aria-hidden="true">❀</div>
+              <span class="placeholder-label">Some image</span>
+              <span class="placeholder-note">
+                Some image
+              </span>
+            </div>
+          }
+
+          <div class="timeline-time">
+            <span class="time-icon" aria-hidden="true">◷</span>
+            <span>{{ event.time }}</span>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  <footer class="timeline-venue">
+    <div class="venue-ornament" aria-hidden="true">
+      <span></span>
+      ✦
+      <span></span>
+    </div>
+
+    <span class="timeline-kicker">WHERE WE MEET</span>
+    <h2>All roads lead to <em>celebration.</em></h2>
+
+    <div class="venue-card">
+      <span class="venue-icon" aria-hidden="true">⌖</span>
+      <h3>{{ venue.name }}</h3>
+      <p>{{ venue.address }}</p>
+      <span class="venue-note">Palmakole, Telangana 501218</span><br/><br/>
+      <a href="https://www.google.com/maps/place/Aloha+resort+%26+convention/@17.22513,78.318954,17z/data=!3m1!4b1!4m9!3m8!1s0x3bcbb9006f44188f:0xa6d397aaf7e27319!5m2!4m1!1i2!8m2!3d17.22513!4d78.318954!16s%2Fg%2F11xt6zs51y?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D">
+        <span>Get directions</span>
+      </a>
+    </div>
+
+    <p class="venue-signoff">
+      We can't wait to celebrate with you <span aria-hidden="true">♡</span>
+    </p>
+  </footer>
+</section>

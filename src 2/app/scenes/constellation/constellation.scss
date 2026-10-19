@@ -1,0 +1,302 @@
+.constellation {
+  position: relative;
+
+  height: 500vh;
+
+  background: #050505;
+
+  color: var(--cream);
+}
+
+.constellation-stage {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201, 169, 110, 0.06),
+      transparent 45%
+    ),
+    #050505;
+}
+
+
+/* --------------------------------
+   CANVAS
+-------------------------------- */
+
+.constellation-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+
+/* --------------------------------
+   CONSTELLATION
+-------------------------------- */
+
+.constellation-system {
+  position: absolute;
+
+  left: 50%;
+  top: 45%;
+
+  width: 80vw;
+  height: 60vw;
+
+  max-width: 420px;
+  max-height: 320px;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 5;
+}
+
+
+/* --------------------------------
+   STARS
+-------------------------------- */
+
+.star {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.9),
+    0 0 35px rgba(201,169,110,0.7);
+}
+
+.star span {
+  position: absolute;
+
+  inset: -12px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201,169,110,0.25),
+      transparent 70%
+    );
+}
+
+
+/* Initial positions */
+
+.star-one {
+  left: 5%;
+  top: 15%;
+}
+
+.star-two {
+  right: 5%;
+  top: 15%;
+}
+
+
+/* --------------------------------
+   ORBITS
+-------------------------------- */
+
+.orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border: 1px solid
+    rgba(201,169,110,0.15);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+.orbit-one {
+  width: 55%;
+  height: 45%;
+}
+
+.orbit-two {
+  width: 80%;
+  height: 65%;
+}
+
+
+/* --------------------------------
+   CONSTELLATION LINES
+-------------------------------- */
+
+.constellation-lines {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.line {
+  stroke: var(--gold);
+
+  stroke-width: 0.15;
+
+  stroke-opacity: 0.5;
+
+  fill: none;
+}
+
+
+/* --------------------------------
+   STORY
+-------------------------------- */
+
+.story {
+  position: absolute;
+
+  left: 50%;
+  top: 70%;
+
+  width: 100%;
+
+  transform:
+    translate(-50%, -50%);
+
+  text-align: center;
+
+  z-index: 10;
+
+  opacity: 0;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 0.35em;
+
+  color: var(--gold);
+}
+
+.story h2 {
+  margin: 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-weight: 300;
+
+  font-size: clamp(
+    3rem,
+    13vw,
+    6rem
+  );
+
+  line-height: 0.9;
+}
+
+
+/* --------------------------------
+   HEART
+-------------------------------- */
+
+.heart {
+  position: absolute;
+
+  left: 50%;
+  top: 45%;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0);
+
+  z-index: 15;
+
+  opacity: 0;
+}
+
+.heart span {
+  position: relative;
+
+  display: block;
+
+  color: var(--gold);
+
+  font-size: 28px;
+
+  text-shadow:
+    0 0 15px rgba(201,169,110,0.8),
+    0 0 50px rgba(201,169,110,0.4);
+}
+
+.heart-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 70px;
+  height: 70px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201,169,110,0.2),
+      transparent 70%
+    );
+
+  filter: blur(5px);
+}
+
+
+/* --------------------------------
+   LARGER SCREENS
+-------------------------------- */
+
+@media (min-width: 768px) {
+
+  .constellation-system {
+    width: 55vw;
+    height: 40vw;
+  }
+
+  .story {
+    top: 72%;
+  }
+
+}

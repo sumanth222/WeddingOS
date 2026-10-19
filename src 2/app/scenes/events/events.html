@@ -1,0 +1,253 @@
+<section id="events" class="events-scene">
+
+  <div class="events-stage">
+
+    <!-- Background -->
+
+    <div class="ambient-glow"></div>
+
+    <div class="grid"></div>
+
+
+    <!-- Header -->
+
+    <header class="events-header">
+
+      <div>
+
+        <span class="system-label">
+          THE WEDDING
+        </span>
+
+        <span class="section-label">
+          / CELEBRATION
+        </span>
+
+      </div>
+
+      <div class="connection">
+
+        <span class="dot"></span>
+
+        LIVE
+
+      </div>
+
+    </header>
+
+
+    <!-- Section intro -->
+
+    <div class="events-intro">
+
+      <span class="eyebrow">
+        SAVE THE DATE
+      </span>
+
+      <h1>
+        A day full of<br>
+        beautiful moments.
+      </h1>
+
+    </div>
+
+
+    <!-- Events -->
+
+    <div class="event-system">
+
+      @for (
+        event of events;
+        track event.id;
+        let i = $index
+      ) {
+
+        <article
+          class="event-card"
+          [attr.data-index]="i"
+        >
+
+          <!-- Event number -->
+
+          <div class="event-top">
+
+            <span class="event-number">
+              {{ event.number }}
+            </span>
+
+            <span class="event-type">
+              {{ event.type }}
+            </span>
+
+          </div>
+
+
+          <!-- Event icon -->
+
+          <div class="event-icon">
+
+            <span>
+              {{ event.icon }}
+            </span>
+
+          </div>
+
+
+          <!-- Main information -->
+
+          <div class="event-content">
+
+            <h2>
+              {{ event.title }}
+            </h2>
+
+            <div class="event-date">
+              {{ event.date }}
+            </div>
+
+            <div class="event-time">
+              {{ event.time }}
+            </div>
+
+          </div>
+
+
+          <!-- Venue -->
+
+          <div class="event-venue">
+
+            <span class="venue-label">
+              LOCATION
+            </span>
+
+            <span class="venue-name">
+              {{ event.venue }}
+            </span>
+
+          </div>
+
+
+          <!-- Description -->
+
+          <p class="event-description">
+            {{ event.description }}
+          </p>
+
+
+          <!-- Bottom status -->
+
+          <div class="event-footer">
+
+            <span>
+              EVENT STATUS
+            </span>
+
+            <span class="status">
+              CONFIRMED
+            </span>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+
+    <!-- Ending -->
+
+    <div class="events-ending">
+
+      <span class="eyebrow">
+        WITH LOVE
+      </span>
+
+      <h2>
+        We saved you a place.
+      </h2>
+
+      <p>
+        The best celebrations are the ones shared with our favourite people.
+      </p>
+
+    </div>
+
+
+    <!-- Progress -->
+
+    <div class="scene-progress">
+
+      <span>04</span>
+
+      <div class="progress-line"></div>
+
+      <span>04</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="invitation-letter" aria-labelledby="invitation-title">
+  <div class="letter-banana-leaves" aria-hidden="true"></div>
+  <div class="letter-banana-leaves letter-ppdd" aria-hidden="true"></div>
+  <div class="letter-leaf leaf-one" aria-hidden="true">❧</div>
+  <div class="letter-leaf leaf-two" aria-hidden="true">✿</div>
+  <div class="letter-content">
+    <span class="letter-kicker">A LITTLE NOTE, FROM OUR HEARTS</span>
+    <div class="letter-flower" aria-hidden="true">✿</div>
+    <h2 id="invitation-title">It wouldn’t be the same<br />without you.</h2>
+    <p class="letter-greeting">To our favourite people,</p>
+    <p class="letter-copy">Some days are special, but the people we share them with make them unforgettable. And honestly, we can’t imagine celebrating this new chapter without you!</p>
+    <p class="letter-copy">So, come for the wedding, stay for the food, join in the laughter, dance like nobody’s watching (we promise not to judge your moves 😄), and help us make memories we’ll be smiling about for years to come.</p>
+    <!-- <p class="letter-copy letter-copy-last">Your love, blessings, and presence would mean the world to us. All we need now is you, a little festive spirit, and perhaps your best dance moves. The rest will take care of itself!</p> -->
+    <div class="letter-signoff">With lots of love, <span>Dheeraj &amp; Drashti</span></div>
+    <a class="rsvp-cta" href="#rsvp-form"><span>Count me in!</span><span aria-hidden="true">♡</span></a>
+  </div>
+
+  <!-- <p class="letter-copy">Some days are special, but the people we share them with make them unforgettable. And honestly, we can’t imagine celebrating this new chapter without you!</p>
+    <p class="letter-copy">So, come for the wedding, stay for the food, join in the laughter, dance like nobody’s watching (we promise not to judge your moves 😄), and help us make memories we’ll be smiling about for years to come.</p> -->
+  </section>
+
+<section class="rsvp-section" id="rsvp-form" aria-labelledby="rsvp-title">
+  <div class="rsvp-sprig sprig-left" aria-hidden="true">❧</div>
+  <div class="rsvp-sprig sprig-right" aria-hidden="true">❧</div>
+  <div class="rsvp-card">
+    <span class="letter-kicker">HELP US PLAN A LITTLE BETTER</span>
+    <h2 id="rsvp-title">Will you join us?</h2>
+    <p class="rsvp-intro">Let us know who’s coming and when you’ll reach Hyderabad.</p>
+    @if (!rsvpSubmitted) {
+      <form class="rsvp-form" (submit)="submitRsvp($event)">
+        <label for="guest-name">Your name</label>
+        <input id="guest-name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required maxlength="100" />
+        <label for="guest-phone">Phone number</label>
+        <input id="guest-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="A number we can reach you on" required minlength="7" maxlength="20" pattern="[0-9+() .-]{7,20}" />
+        <label for="guest-count">How many people will be coming, including you?</label>
+        <select id="guest-count" name="guests" required>
+          <option value="1">Just me</option><option value="2">2 people</option><option value="3">3 people</option><option value="4">4 people</option><option value="5">5 people</option><option value="6">6 people</option><option value="7">7 people</option><option value="8">8 people</option><option value="9">9 people</option><option value="10">10 people</option>
+        </select>
+        <label for="arrival-date">Which date will you reach Hyderabad?</label>
+        <input id="arrival-date" name="arrivalDate" type="date" required />
+        <p class="field-hint">This is your arrival date in Hyderabad, not the wedding date.</p>
+        <button class="rsvp-submit" type="submit">Send RSVP <span aria-hidden="true">♡</span></button>
+        <p class="privacy-note">This is a preview form. Your response will be shown here for now and is not sent to a server yet.</p>
+      </form>
+    } @else {
+      <div class="rsvp-success" role="status" aria-live="polite">
+        <span class="success-flower" aria-hidden="true">✿</span>
+        <h3>Thank you, {{ rsvpDetails.name }}!</h3>
+        <p>We’re so glad you’re planning to be part of the celebration.</p>
+        <dl>
+          <div><dt>Guests</dt><dd>{{ rsvpDetails.guests }}</dd></div>
+          <div><dt>Arriving in Hyderabad</dt><dd>{{ rsvpDetails.arrivalDate }}</dd></div>
+          <div><dt>Contact</dt><dd>{{ rsvpDetails.phone }}</dd></div>
+        </dl>
+        <p class="privacy-note">This RSVP is only displayed in this page preview. Connect a backend or form service when you’re ready to collect responses.</p>
+        <button class="rsvp-edit" type="button" (click)="editRsvp()">Edit response</button>
+      </div>
+    }
+  </div>
+  <p class="rsvp-footer">Made with love, for a day full of love <span aria-hidden="true">♡</span></p>
+</section>

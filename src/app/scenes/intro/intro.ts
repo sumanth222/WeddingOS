@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   inject
 } from '@angular/core';
 
@@ -20,17 +21,21 @@ import { AudioService } from '../../core/services/audio';
   templateUrl: './intro.html',
   styleUrl: './intro.scss'
 })
-export class IntroComponent implements AfterViewInit {
+export class IntroComponent implements AfterViewInit, OnDestroy {
 
   private element = inject(ElementRef);
 
   constructor(private audioService: AudioService) {}
 
+  private introContext?: gsap.Context;
+
   ngAfterViewInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
 
-  gsap.registerPlugin(ScrollTrigger);
+    const root = this.element.nativeElement;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const root = this.element.nativeElement;
+    this.introContext = gsap.context(() => {
 
   const textOne = root.querySelector('.text-one');
   const textTwo = root.querySelector('.text-two');
@@ -217,7 +222,45 @@ export class IntroComponent implements AfterViewInit {
     }
   });
 
-}
+  // Decorative motion stays gentle and independent from the scroll story.
+  if (!reducedMotion) {
+    gsap.to(root.querySelectorAll('.botanical-orbit span'), {
+      y: (index: number) => index === 1 ? -13 : 10,
+      rotation: (index: number) => index === 1 ? 5 : -4,
+      duration: (index: number) => 3.8 + index * 0.7,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      stagger: 0.25
+    });
+
+    gsap.to(root.querySelectorAll('.floating-petals span'), {
+      y: (index: number) => index % 2 === 0 ? -24 : 18,
+      x: (index: number) => index % 2 === 0 ? 12 : -10,
+      rotation: (index: number) => index % 2 === 0 ? 18 : -14,
+      opacity: (index: number) => index % 2 === 0 ? 0.72 : 0.28,
+      duration: (index: number) => 4 + index * 0.45,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      stagger: 0.18
+    });
+
+    gsap.to(scrollHint, {
+      y: 7,
+      duration: 1.25,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true
+    });
+
+  }
+  }, root);
+  }
+
+  ngOnDestroy(): void {
+    this.introContext?.revert();
+  }
 
 startMusic(): void {
   this.audioService.play();

@@ -2,7 +2,6 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 
 import { IntroComponent } from './scenes/intro/intro';
 
-import { ConstellationComponent } from './scenes/constellation/constellation';
 
 import { TheTwoComponent } from './scenes/the-two/the-two';
 
@@ -10,10 +9,10 @@ import { MemoriesComponent } from './scenes/memories/memories';
 
 import { ScrollService } from './core/scroll';
 
-import { WeddingOs } from './scenes/wedding-os/wedding-os';
 
 import { Events } from './scenes/events/events';
 import { AudioService } from './core/services/audio';
+import { Timeline } from './scenes/timeline/timeline';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +20,10 @@ import { AudioService } from './core/services/audio';
 
   imports: [
     IntroComponent,
-    ConstellationComponent,
     TheTwoComponent,
     MemoriesComponent,
-    WeddingOs,
-    Events
+    Events,
+    Timeline
   ],
 
   templateUrl: './app.html',

@@ -27,8 +27,28 @@ import {
 export class Events
   implements AfterViewInit, OnDestroy {
 
-  events =
-    WEDDING_EVENTS;
+  events = WEDDING_EVENTS;
+
+  rsvpSubmitted = false;
+  rsvpDetails = { name: '', phone: '', guests: '1', arrivalDate: '' };
+
+  submitRsvp(event: SubmitEvent): void {
+    event.preventDefault();
+    const form = event.currentTarget as HTMLFormElement;
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    this.rsvpDetails = {
+      name: String(data.get('name') ?? '').trim(),
+      phone: String(data.get('phone') ?? '').trim(),
+      guests: String(data.get('guests') ?? '1'),
+      arrivalDate: String(data.get('arrivalDate') ?? '')
+    };
+    this.rsvpSubmitted = true;
+  }
+
+  editRsvp(): void {
+    this.rsvpSubmitted = false;
+  }
 
   private ctx?: gsap.Context;
 
@@ -53,7 +73,7 @@ export class Events
 
     const root =
       document.querySelector(
-        '.events'
+        '.events-scene'
       ) as HTMLElement;
 
     if (!root) {
@@ -68,7 +88,7 @@ export class Events
 
     const cards =
       gsap.utils.toArray<HTMLElement>(
-        '.event-card'
+        '.event-card', root
       );
 
     const ending =
