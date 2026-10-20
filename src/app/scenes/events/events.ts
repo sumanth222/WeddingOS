@@ -30,7 +30,7 @@ export class Events
   events = WEDDING_EVENTS;
 
   rsvpSubmitted = false;
-  rsvpDetails = { name: '', phone: '', guests: '1', arrivalDate: '', departureDate: '' };
+  rsvpDetails = { name: '', phone: '', guests: '1', arrivalTime: '', departureTime: '', attendance: '', travelBack: '' };
 
   submitRsvp(event: SubmitEvent): void {
     event.preventDefault();
@@ -41,8 +41,10 @@ export class Events
       name: String(data.get('name') ?? '').trim(),
       phone: String(data.get('phone') ?? '').trim(),
       guests: String(data.get('guests') ?? '1'),
-      arrivalDate: String(data.get('arrivalDate') ?? ''),
-      departureDate: String(data.get('departureDate') ?? '')
+      attendance: String(data.get('attendance') ?? ''),
+      arrivalTime: String(data.get('arrivalTime') ?? ''),
+      departureTime: String(data.get('departureTime') ?? ''),
+      travelBack: String(data.get('travelBack') ?? '1').trim()
     };
     this.rsvpSubmitted = true;
   }

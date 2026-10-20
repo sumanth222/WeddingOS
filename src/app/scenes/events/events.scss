@@ -620,8 +620,8 @@
 .rsvp-intro {
   max-width: 310px;
   margin: 13px auto 26px;
-  color: #806b5d;
-  font-size: 14px;
+  color: #a9472f;
+  font-size: 18px;
   line-height: 1.65;
   text-align: center;
 }
@@ -632,7 +632,7 @@
 }
 
 .rsvp-form label {
-  margin: 14px 0 7px;
+  margin: 5px 0 2px;
   color: #684f40;
   font-size: 12px;
   font-weight: 700;
@@ -760,7 +760,7 @@
   margin: 0;
   color: #624b40;
   font-weight: 700;
-  text-align: right;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
@@ -1220,4 +1220,128 @@
   height: 7rem;
   width: 7rem;
   opacity: 0.8;
+}
+.attendance-field {
+  min-width: 0;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+}
+
+.attendance-field legend {
+  margin-bottom: 0.5rem;
+  color: #684f40;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.attendance-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.1rem;
+}
+
+.attendance-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #765d4d;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.attendance-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.radio-dot {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  place-items: center;
+  border: 1.5px solid #c99a7f;
+  border-radius: 50%;
+  background: #fffdf8;
+  transition: border-color 0.2s ease;
+}
+
+.attendance-option input:checked + .radio-dot {
+  border-color: #a9472f;
+}
+
+.attendance-option input:checked + .radio-dot::after {
+  content: '';
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #a9472f;
+}
+
+.attendance-option:has(input:focus-visible) .radio-dot {
+  outline: 2px solid #a9472f;
+  outline-offset: 3px;
+}
+
+.attendance-option:has(input:checked) {
+  color: #a9472f;
+}
+
+@media (max-width: 360px) {
+  .attendance-options {
+    gap: 0.65rem;
+  }
+
+  .attendance-option {
+    font-size: 0.72rem;
+  }
+}
+
+.date-time-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.date-time-row input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0.65rem;
+  border: 1px solid #e3d4c3;
+  border-radius: 12px;
+  color: #624b40;
+  background: #fffefa;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.date-time-row input:focus {
+  border-color: #b45a40;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(169, 71, 47, 0.12);
+}
+
+@media (max-width: 360px) {
+  .date-time-row {
+    gap: 0.35rem;
+  }
+
+  .date-time-row input {
+    padding: 0.5rem 0.35rem;
+    font-size: 0.72rem;
+  }
+}
+
+.travelBackField{
+  margin-top: 0.7rem !important;
+  margin-bottom: 0.2rem !important;
 }

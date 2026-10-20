@@ -1,7 +1,7 @@
 <section class="invitation-letter" aria-labelledby="invitation-title">
   <!-- Decorative artwork stays in its own left-side column. -->
 
-  <div class="letter-leaf leaf-one" aria-hidden="true">❧</div>
+  <div class="letter-leaf leaf-one" aria-hidden="true"></div>
 
   <div class="letter-content">
 
@@ -47,20 +47,43 @@
   id="rsvp-form"
   aria-labelledby="rsvp-title"
 >
-  <div class="rsvp-sprig sprig-left" aria-hidden="true">❧</div>
-  <div class="rsvp-sprig sprig-right" aria-hidden="true">❧</div>
+  <div class="rsvp-sprig sprig-left" aria-hidden="true"></div>
+  <div class="rsvp-sprig sprig-right" aria-hidden="true"></div>
 
   <div class="rsvp-card">
     <span class="letter-kicker">HELP US PLAN A LITTLE BETTER</span>
 
-    <h2 id="rsvp-title">Will you join us?</h2>
-
     <p class="rsvp-intro">
-      Let us know who’s coming and when you’ll reach Hyderabad.
+      Let us know who’s coming and when you’ll reach.
     </p>
 
     @if (!rsvpSubmitted) {
       <form class="rsvp-form" (submit)="submitRsvp($event)">
+
+        <fieldset class="attendance-field">
+        <legend>Will you be joining us?</legend>
+
+        <div class="attendance-options">
+          <label class="attendance-option">
+            <input type="radio" name="attendance" value="YES" required />
+            <span class="radio-dot"></span>
+            <span>Yes!</span>
+          </label>
+
+          <label class="attendance-option">
+            <input type="radio" name="attendance" value="NO" required />
+            <span class="radio-dot"></span>
+            <span>Can't make it</span>
+          </label>
+
+          <label class="attendance-option">
+            <input type="radio" name="attendance" value="MAYBE" required />
+            <span class="radio-dot"></span>
+            <span>Maybe</span>
+          </label>
+        </div>
+      </fieldset>
+
         <label for="guest-name">Your name</label>
         <input
           id="guest-name"
@@ -102,43 +125,76 @@
           <option value="10">10 people</option>
         </select>
 
-        <label for="arrival-date">
-          Which date will you reach Hyderabad?
-        </label>
-        <input
-          id="arrival-date"
-          name="arrivalDate"
-          type="date"
-          required
-        />
+        <label for="arrival-date">When will you reach Hyderabad?</label>
 
-        <p class="field-hint">
-          This is your arrival date in Hyderabad, not the wedding date.
-        </p>
+        <div class="date-time-row">
+          <input
+            id="arrival-date"
+            name="arrivalDate"
+            type="date"
+            required
+          />
 
-        <label for="departure-date">
-          Until when are you planning to stay in Hyderabad?
-        </label>
+          <input
+            id="arrival-time"
+            name="arrivalTime"
+            type="time"
+            aria-label="Arrival time in Hyderabad"
+            required
+          />
+        </div>
+<label for="departure-date">
+  Until when are you planning to stay in Hyderabad?
+</label>
 
-        <input
-          id="departure-date"
-          name="departureDate"
-          type="date"
-          required
-        />
+<div class="date-time-row">
+  <input
+    id="departure-date"
+    name="departureDate"
+    type="date"
+    required
+  />
 
-        <p class="field-hint">
-          This helps us plan the celebrations and make your stay a little easier.
+  <input
+    id="departure-time"
+    name="departureTime"
+    type="time"
+    aria-label="Departure time from Hyderabad"
+    required
+  />
+</div>
+
+<fieldset class="attendance-field travelBackField">
+        <label class="travel-back">How will you be travelling back?</label>
+
+        <div class="attendance-options">
+          <label class="attendance-option">
+            <input type="radio" name="travelBack" value="BUS" required />
+            <span class="radio-dot"></span>
+            <span>By Bus</span>
+          </label>
+
+          <label class="attendance-option">
+            <input type="radio" name="travelBack" value="TRAIN" required />
+            <span class="radio-dot"></span>
+            <span>By Train</span>
+          </label>
+
+          <label class="attendance-option">
+            <input type="radio" name="travelBack" value="FLIGHT" required />
+            <span class="radio-dot"></span>
+            <span>By Flight</span>
+          </label>
+        </div>
+      </fieldset>
+
+<p class="field-hint">
+  This helps us plan the celebrations and make your stay a little easier.
 </p>
 
         <button class="rsvp-submit" type="submit">
           Send RSVP
         </button>
-
-        <p class="privacy-note">
-          This is a preview form. Your response will be shown here for now
-          and is not sent to a server yet.
-        </p>
       </form>
     } @else {
       <div class="rsvp-success" role="status" aria-live="polite">
@@ -150,6 +206,20 @@
           We’re so glad you’re planning to be part of the celebration.
         </p>
 
+        <dt>Attendance</dt>
+        <dd>
+          @switch (rsvpDetails.attendance) {
+            @case ('YES') {
+              Yes, I'll be there!
+            }
+            @case ('NO') {
+              Sorry, can't make it
+            }
+            @case ('MAYBE') {
+              Maybe, I'll confirm
+            }
+          }
+        </dd>
         <dl>
           <div>
             <dt>Guests</dt>
@@ -157,35 +227,23 @@
           </div>
           <div>
             <dt>Arriving in Hyderabad</dt>
-            <dd>{{ rsvpDetails.arrivalDate }}</dd>
+            <dd>{{ rsvpDetails.arrivalTime }} · {{ rsvpDetails.arrivalTime }}</dd>
           </div>
-          <div>
-            <dt>Contact</dt>
-            <dd>{{ rsvpDetails.phone }}</dd>
-          </div>
+
           <div>
             <dt>Leaving Hyderabad</dt>
-            <dd>{{ rsvpDetails.departureDate }}</dd>
+            <dd>{{ rsvpDetails.departureTime }} · {{ rsvpDetails.departureTime }}</dd>
+          </div>
+
+          <div>
+            <dt>Mode of travel back from Hyderabad</dt>
+            <dd>{{ rsvpDetails.travelBack }}</dd>
           </div>
         </dl>
-
-        <p class="privacy-note">
-          This RSVP is only displayed in this page preview. Connect a backend
-          or form service when you’re ready to collect responses.
-        </p>
-
-        <button
-          class="rsvp-edit"
-          type="button"
-          (click)="editRsvp()"
-        >
-          Edit response
-        </button>
       </div>
     }
   </div>
 
   <p class="rsvp-footer">
-    Made with love, for a day full of love <span aria-hidden="true"></span>
   </p>
 </section>
