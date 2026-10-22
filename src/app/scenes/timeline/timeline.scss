@@ -124,6 +124,8 @@
   grid-template-rows: auto auto auto;
   width: min(100%, 54rem);
   margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1.2rem;
 }
 
 .timeline-top-row {
@@ -365,6 +367,7 @@
     border-radius: 65px 65px 3px 3px / 32px 32px 3px 3px;
     background: #FEFCF6;
     margin: 0.8rem;
+    padding: 3rem;
   }
 
   .timeline-heading {
