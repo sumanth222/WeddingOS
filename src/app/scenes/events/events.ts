@@ -13,6 +13,7 @@ import {
 import {
   WEDDING_EVENTS
 } from '../../core/models/wedding-events';
+import { Timeline } from '../timeline/timeline';
 
 interface RsvpResponse {
   success: boolean;
@@ -25,7 +26,8 @@ interface RsvpResponse {
   selector: 'app-events',
   standalone: true,
   templateUrl: './events.html',
-  styleUrl: './events.scss'
+  styleUrl: './events.scss',
+  imports: [Timeline]
 })
 export class Events implements AfterViewInit, OnDestroy {
 
