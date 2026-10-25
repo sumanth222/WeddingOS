@@ -6,7 +6,7 @@ tags:
 - git
 - hotspot
 created: 2026-10-19
-updated: 2026-10-23
+updated: 2026-10-25
 filenames:
 - WeddingOS-terracotta-ivory-banana-leaf/src/app/scenes/wedding-os/wedding-os.scss
 links: []
@@ -14,7 +14,7 @@ kind: code
 status: proposed
 superseded_by: null
 deprecated_at: null
-review_after: 2026-10-23
+review_after: 2026-10-25
 source_chat_id: null
 created_at: 2026-10-19T06:49:33.451739+00:00
 summary: null

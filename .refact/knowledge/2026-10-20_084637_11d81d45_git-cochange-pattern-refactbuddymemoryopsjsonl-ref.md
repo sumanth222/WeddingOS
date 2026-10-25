@@ -6,7 +6,7 @@ tags:
 - git
 - pattern
 created: 2026-10-20
-updated: 2026-10-23
+updated: 2026-10-25
 filenames:
 - .refact/buddy/memory_ops.jsonl
 - .refact/buddy/state.json
@@ -15,7 +15,7 @@ kind: pattern
 status: proposed
 superseded_by: null
 deprecated_at: null
-review_after: 2026-10-23
+review_after: 2026-10-25
 source_chat_id: null
 created_at: 2026-10-20T03:16:37.181439+00:00
 summary: null
