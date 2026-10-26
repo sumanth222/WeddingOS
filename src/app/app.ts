@@ -11,8 +11,8 @@ import { ScrollService } from './core/scroll';
 
 
 import { Events } from './scenes/events/events';
-import { AudioService } from './core/services/audio';
 import { Timeline } from './scenes/timeline/timeline';
+import { KeepAliveService } from './core/services/keep-alive';
 
 @Component({
   selector: 'app-root',
@@ -31,36 +31,18 @@ import { Timeline } from './scenes/timeline/timeline';
 })
 export class AppComponent {
 
+  ngOnInit(): void {
+    this.keepAlive.start();
+  }
+
   private scrollService =
     inject(ScrollService);
 
-    constructor(private audioService: AudioService){}
+    constructor(private keepAlive: KeepAliveService){}
 
     @ViewChild('weddingMusic')
     weddingMusic!: ElementRef<HTMLAudioElement>;
 
     private musicStarted = false;
-
-    ngAfterViewInit(): void {
-  const audio = this.weddingMusic.nativeElement;
-
-  audio.loop = true;
-  audio.volume = 0.70;
-
-  const startMusic = (): void => {
-    audio.play()
-      .then(() => {
-        console.log('🎵 Wedding music started');
-      })
-      .catch(error => {
-        console.error('Audio failed:', error);
-      });
-  };
-
-  window.addEventListener('touchstart', startMusic, {
-    once: true,
-    passive: true
-  });
-}
 
 }
